@@ -35,8 +35,37 @@ class PvpPriceSwitcher extends Module
 
     public function install()
     {
+        if (Shop::isFeatureActive()) {
+            Shop::setContext(Shop::CONTEXT_ALL);
+        }
+        
         return parent::install() &&
-            $this->registerHook('displayNav');
+               $this->registerHook('displayNav') &&
+               $this->registerHook('header') &&
+               $this->registerHook('backOfficeHeader');
+    }
+
+    public function uninstall()
+    {
+        return parent::uninstall();
+    }
+
+    public function getContent()
+    {
+        if (((bool)Tools::isSubmit('submitPvpPriceSwitcherModule')) == true) {
+            $this->postProcess();
+        }
+        return $this->renderForm();
+    }
+
+    protected function postProcess()
+    {
+        // Procesar y guardar la configuración enviada por el usuario
+    }
+
+    protected function renderForm()
+    {
+        // Construir y devolver el formulario de configuración
     }
 
     public function hookDisplayNav($params)
