@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>pvppriceswitcher</name>
+    <displayName><![CDATA[Cambio de impuestos de precio]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[Muestre el precio del producto en su tienda con impuestos incluidos o excluidos con un solo clic.]]></description>
+    <author><![CDATA[Reborn Media Studio]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+	<confirmUninstall><![CDATA[¿Está seguro de que desea desinstalar este módulo?]]></confirmUninstall>
+    <is_configurable>1</is_configurable>
+    <need_instance>0</need_instance>
+</module>
