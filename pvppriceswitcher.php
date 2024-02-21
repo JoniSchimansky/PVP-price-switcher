@@ -52,10 +52,13 @@ class PvpPriceSwitcher extends Module
 
     public function getContent()
     {
-        if (((bool)Tools::isSubmit('submitPvpPriceSwitcherModule')) == true) {
-            $this->postProcess();
+        $output = null;
+
+        if (Tools::isSubmit('submit'.$this->name)) {
+            // Procesar la información del formulario de configuración
+            $output .= $this->displayConfirmation($this->l('Settings updated'));
         }
-        return $this->renderForm();
+        return $output.$this->displayForm();
     }
 
     protected function postProcess()
@@ -72,15 +75,15 @@ class PvpPriceSwitcher extends Module
     {
         $this->context->controller->addJS($this->_path.'views/js/front.js');
         $this->context->controller->addCSS($this->_path.'views/css/front.css');
-        $this->context->smarty->assign(array(
-            'is_customer_b2b' => $this->isCustomerB2B(),
-        ));
+        // $this->context->smarty->assign(array(
+        //     'is_customer_b2b' => $this->isCustomerB2B(),
+        // ));
         return $this->display(__FILE__, 'views/templates/hook/toggle.tpl');
     }
 
-    private function isCustomerB2B()
-    {
-        // Implement logic to this function
-        return $this->context->customer->isLogged() && $this->context->customer->id_default_group == YOUR_B2B_GROUP_ID;
-    }
+    // private function isCustomerB2B()
+    // {
+    //     // Implement logic to this function
+    //     return $this->context->customer->isLogged() && $this->context->customer->id_default_group == YOUR_B2B_GROUP_ID;
+    // }
 }
