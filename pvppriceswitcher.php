@@ -36,10 +36,10 @@ class PvpPriceSwitcher extends Module
     public function install()
     {
         return parent::install() &&
-            $this->registerHook('displayHeader');
+            $this->registerHook('displayNav');
     }
 
-    public function hookDisplayHeader($params)
+    public function hookDisplayNav($params)
     {
         $this->context->controller->addJS($this->_path.'views/js/front.js');
         $this->context->controller->addCSS($this->_path.'views/css/front.css');
